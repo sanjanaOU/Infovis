@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plot with Selection</title>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; 
+            text-align: center;
+            margin: 20px;
+        }
+        
+        h2 {
+            color: #333; 
+            font-weight: bold;
+        }
+        
+        .controls { 
+            margin: 15px; 
+            display: flex;
+            justify-content: space-around;
+            gap: 10px; 
+        }
+        
+        select { 
+            padding: 7px; 
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px; 
+        }
+        
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .right-container {
+            width: 140px; 
+            height: 450px;
+            padding: 15px;
+            overflow-y: scroll; 
+            border: 1px solid gray;
+            background-color: #fff;
+        }
+        
+        #legend {
+            width: 140px;
+            padding-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px; 
+        }
+        
+        .legend-item rect {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+        
+        .legend-item text {
+            font-size: 13px; 
+        }
+        
+        svg {
+            background: white;
+            border-radius: 5px; 
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            cursor: crosshair;
+        }
+        
+        .selection-box {
+            fill: rgba(100, 100, 255, 0.2);
+            stroke: blue;
+            stroke-dasharray: 5, 3; 
+        }
+        
+        table {
+            margin: 18px auto; 
+            border-collapse: collapse;
+            width: 90%; 
+            background: #ffffff;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 7px; 
+            text-align: left;
+        }
+        
+        th {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+        }
+
+        td {
+            font-size: 14px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Scatter Plot Visualization</h2>
+
+    <div class="controls">
+        <label>X-Axis: <select id="x-axis"></select></label>
+        <label>Y-Axis: <select id="y-axis"></select></label>
+        <label>Color: <select id="color"></select></label>
+        <label>Opacity: <select id="opacity"></select></label>
+        <label>Size: <select id="size"></select></label>
+    </div>
+
+    <div class="chart-container">
+        <div id="scatterplot"></div>
+        <div class="right-container">
+            <svg id="legend"></svg>
+        </div>
+    </div>
+
+    <h3>Data Selection</h3>
+    
+    <table id="data-table">
+        <thead>
+            <tr id="table-header"></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    <script src="myscript.js"></script>
+
+</body>
+</html>
